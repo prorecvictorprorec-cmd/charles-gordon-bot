@@ -55,4 +55,77 @@
     <div class="header">
         <div>
             <h1>Віктор Кравченко</h1>
-            <div style="color: var(--text-gray);">Звукорежи
+            <div style="color: var(--text-gray);">Звукорежисер театру ім. Т.Г. Шевченка | Zvuko Shop</div>
+            <div class="badge">🛡️ ЗАХИСНИК УКРАЇНИ</div>
+        </div>
+    </div>
+
+    <div class="main-layout">
+        <div class="left-col">
+            <div class="card">
+                <h2>🎬 Мої роботи та тести звуку</h2>
+                <iframe id="player" class="main-video" src="https://www.youtube.com/embed/8o4k9-z6rV8" allowfullscreen></iframe>
+                
+                <div class="video-grid">
+                    <div class="video-thumb" onclick="load('8o4k9-z6rV8')">
+                        <img src="https://img.youtube.com/vi/8o4k9-z6rV8/mqdefault.jpg">
+                        <span>Огляд мікрофона Maono</span>
+                    </div>
+                    <div class="video-thumb" onclick="load('9_U8CBy0j_M')">
+                        <img src="https://img.youtube.com/vi/9_U8CBy0j_M/mqdefault.jpg">
+                        <span>Тест звуку та запис</span>
+                    </div>
+                    <div class="video-thumb" onclick="load('DInX4oH_kTo')">
+                        <img src="https://img.youtube.com/vi/DInX4oH_kTo/mqdefault.jpg">
+                        <span>Аудіоінтерфейси</span>
+                    </div>
+                    <div class="video-thumb" onclick="load('W9m8lS8i3i8')">
+                        <img src="https://img.youtube.com/vi/W9m8lS8i3i8/mqdefault.jpg">
+                        <span>Налаштування для стрімів</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-col">
+            <div class="card">
+                <h2>⚖️ Представник автора</h2>
+                <div class="chat" id="log">
+                    <div style="color: var(--yt-blue); margin-bottom:10px;"><b>Бот-Юрист:</b> Вітаю. Оскільки Віктор Миколайович на службі, я координую питання роялті.</div>
+                </div>
+                <div id="ui">
+                    <button class="btn" onclick="act('theatre')">🏢 Адміністрація театру</button>
+                    <button class="btn" onclick="act('oku')">⚖️ Юрист ОКУ / УААСП</button>
+                </div>
+                <p style="text-align:center; font-size:12px; color: var(--text-gray); margin-top:20px;">
+                    <span style="cursor:pointer; text-decoration:underline;" onclick="alert('prorecvictorprorec@gmail.com')">Показати контактну пошту</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 Віктор Кравченко. Всі права захищено законодавством України.
+    </div>
+</div>
+
+<script>
+function load(id) {
+    document.getElementById('player').src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
+}
+
+function act(role) {
+    const log = document.getElementById('log');
+    const mail = "prorecvictorprorec@gmail.com";
+    let msg = (role === 'theatre') 
+        ? "Надішліть звіт про вистави з 2023 року на пошту: " + mail 
+        : "Прошу перевірити баланс роялті за прізвищем Кравченко В. М.";
+    
+    log.innerHTML += `<div style="margin-top:10px; border-left: 2px solid #555; padding-left:10px;">${msg}</div>`;
+    document.getElementById('ui').innerHTML = "<p style='text-align:center; color: var(--yt-blue);'>Запит прийнято.</p>";
+    log.scrollTop = log.scrollHeight;
+}
+</script>
+
+</body>
+</html>
