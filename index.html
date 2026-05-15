@@ -14,7 +14,7 @@
         
         .author-card { background: #1c221d; padding: 15px; border-radius: 8px; margin-bottom: 25px; border-left: 3px solid #8cb896; }
         .author-card p { margin: 5px 0; font-size: 15px; }
-        .email-link { color: #8cb896; text-decoration: none; font-weight: bold; }
+        .secure-mail { color: #8cb896; font-weight: bold; cursor: pointer; border-bottom: 1px dashed #8cb896; }
 
         .chat-area { background: #0f1310; border-radius: 10px; padding: 20px; height: 280px; overflow-y: auto; margin-bottom: 25px; border: 1px solid #2d362f; }
         .bot-name { color: #8cb896; font-weight: bold; font-size: 13px; display: block; margin-bottom: 5px; }
@@ -37,14 +37,13 @@
     <div class="author-card">
         <p><strong>Посада:</strong> Звукорежисер Чернігівського обласного академічного українського музично-драматичного театру ім. Т.Г. Шевченка</p>
         <p><strong>Об'єкт права:</strong> Музичне оформлення вистави «Чарлі Гордон – ідіот»</p>
-        <p><strong>Email для звітів:</strong> <a href="mailto:prorecvictorprorec@gmail.com" class="email-link">prorecvictorprorec@gmail.com</a></p>
+        <p><strong>Контакт:</strong> <span id="mail-placeholder" class="secure-mail" onclick="revealMail()">[Показати Email для звітів]</span></p>
     </div>
 
     <div class="chat-area" id="chatBox">
         <div class="message">
             <span class="bot-name">ЮРИДИЧНИЙ АСИСТЕНТ</span>
-            Бажаю здоров'я. Я уповноважений здійснювати моніторинг нарахування роялті для Віктора Миколайовича на час його перебування у лавах ЗСУ. 
-            <br><br>Представникам театру та ОКУ необхідно надати звітність про виконання творів. Хто ви?
+            Бажаю здоров'я. Я уповноважений здійснювати моніторинг нарахування роялті для Віктора Миколайовича. Хто ви?
         </div>
     </div>
 
@@ -55,27 +54,36 @@
 </div>
 
 <div class="footer">
-    Автоматизована система обліку авторських прав «VARKHAN Legal»<br>
-    Згенеровано згідно з чинним законодавством України про авторське право.
+    Автоматизована система обліку авторських прав «VARKHAN Legal»
 </div>
 
 <script>
+// Функція для розшифровки пошти (захист від ботів)
+function revealMail() {
+    const user = "prorecvictorprorec";
+    const domain = "gmail.com";
+    const el = document.getElementById('mail-placeholder');
+    el.innerHTML = `<a href="mailto:${user}@${domain}" style="color: #8cb896;">${user}@${domain}</a>`;
+    el.onclick = null; // Вимикаємо клік після появи
+}
+
 function handleRole(role) {
     const chat = document.getElementById('chatBox');
     const btns = document.getElementById('btnGroup');
+    const m = "prorecvictorprorec" + "@" + "gmail.com"; // Збірка адреси всередині скрипта
+    
     let response = "";
-
     if(role === 'theatre') {
-        response = "Для Чернігівського драмтеатру: Прошу надати відомості про нарахування роялті з квітня 2023 року. Копії рапортів та підтвердження перерахувань до ОКУ надсилайте на <strong>prorecvictorprorec@gmail.com</strong>. Дякуємо за підтримку колеги!";
+        response = `Для Чернігівського драмтеатру: Прошу надати відомості про нарахування роялті з квітня 2023 року. Копії рапортів надсилайте на <strong>${m}</strong>.`;
     } else {
-        response = "Для представників ОКУ: Прошу провести звірку за прізвищем Кравченко В. М. щодо вистави «Чарлі Гордон – ідіот». Актуальний статус нарахувань та проекти документів прошу направити на <strong>prorecvictorprorec@gmail.com</strong>.";
+        response = `Для представників ОКУ: Прошу провести звірку за прізвищем Кравченко В. М. Актуальний статус нарахувань прошу направити на <strong>${m}</strong>.`;
     }
 
     chat.innerHTML += `<div class="message" style="margin-top:15px; border-left: 2px solid #8cb896;">
         <span class="bot-name">СИСТЕМА</span>
         ${response}
     </div>`;
-    btns.innerHTML = `<p style="text-align:center; color:#8cb896; font-weight:bold; padding: 10px;">Запит зафіксовано. Очікуємо на зворотний зв'язок на вказану пошту.</p>`;
+    btns.innerHTML = `<p style="text-align:center; color:#8cb896; font-weight:bold; padding: 10px;">Запит зафіксовано. Використовуйте вказану адресу для офіційної кореспонденції.</p>`;
     chat.scrollTop = chat.scrollHeight;
 }
 </script>
