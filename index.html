@@ -3,90 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Авторський контроль — Кравченко В. М.</title>
+    <title>Віктор Кравченко — Звукорежисер та Композитор</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #1a1e1b; color: #e0e0e0; margin: 0; padding: 20px; line-height: 1.6; }
-        .container { max-width: 650px; margin: 20px auto; background: #242b25; padding: 35px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); border-top: 4px solid #5a8a68; }
-        .header-info { border-bottom: 1px solid #3d4a3f; padding-bottom: 20px; margin-bottom: 25px; }
-        h1 { color: #ffffff; font-size: 22px; margin: 0 0 10px 0; letter-spacing: 0.5px; }
-        .position { color: #8cb896; font-size: 14px; font-weight: bold; text-transform: uppercase; margin-bottom: 5px; }
-        .status-tag { background: #d9534f; color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; display: inline-block; }
+        :root {
+            --bg-color: #0f0f0f; /* Колір фону YouTube Dark */
+            --card-bg: #1e1e1e;
+            --accent-color: #ff0000; /* Акцентний червоний YouTube */
+            --text-main: #ffffff;
+            --text-dim: #aaaaaa;
+            --yt-blue: #3ea6ff;
+        }
+
+        body { font-family: 'Roboto', Arial, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
         
-        .author-card { background: #1c221d; padding: 15px; border-radius: 8px; margin-bottom: 25px; border-left: 3px solid #8cb896; }
-        .author-card p { margin: 5px 0; font-size: 15px; }
-        .secure-mail { color: #8cb896; font-weight: bold; cursor: pointer; border-bottom: 1px dashed #8cb896; }
+        /* Шапка в стилі банера YouTube */
+        .header { 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&q=80&w=1000'); /* Тимчасовий фон звукозапису */
+            background-size: cover; background-position: center;
+            height: 200px; border-radius: 15px; display: flex; align-items: flex-end; padding: 30px; margin-bottom: 30px; border: 1px solid #333;
+        }
+        .header-content h1 { margin: 0; font-size: 28px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        .status-tag { background: var(--accent-color); color: white; padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; margin-top: 10px; display: inline-block; }
 
-        .chat-area { background: #0f1310; border-radius: 10px; padding: 20px; height: 280px; overflow-y: auto; margin-bottom: 25px; border: 1px solid #2d362f; }
-        .bot-name { color: #8cb896; font-weight: bold; font-size: 13px; display: block; margin-bottom: 5px; }
-        .message { background: #242b25; padding: 12px; border-radius: 0 10px 10px 10px; display: inline-block; max-width: 90%; margin-bottom: 15px; }
+        .main-grid { display: grid; grid-template-columns: 1fr 300px; gap: 20px; }
+        @media (max-width: 768px) { .main-grid { grid-template-columns: 1fr; } }
 
-        .action-buttons button { width: 100%; background: #4a7c59; color: white; border: none; padding: 14px; margin-bottom: 10px; border-radius: 8px; cursor: pointer; font-size: 15px; font-weight: 600; transition: 0.3s; }
-        .action-buttons button:hover { background: #5a8a68; transform: translateY(-2px); }
-        .footer { text-align: center; font-size: 11px; color: #5c6e60; margin-top: 40px; }
+        /* Картки */
+        .card { background: var(--card-bg); padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #333; }
+        h2 { font-size: 18px; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 10px; color: var(--yt-blue); }
+
+        /* Портфоліо (Відео) */
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 15px; background: #000; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+        /* Чат-бот */
+        .chat-box { background: #000; border-radius: 8px; padding: 15px; height: 200px; overflow-y: auto; font-size: 14px; border: 1px solid #222; margin-bottom: 15px; }
+        .msg { margin-bottom: 10px; border-left: 2px solid var(--yt-blue); padding-left: 10px; }
+        .btn-action { background: #333; color: white; border: 1px solid #444; width: 100%; padding: 10px; margin-bottom: 8px; border-radius: 6px; cursor: pointer; text-align: left; transition: 0.2s; }
+        .btn-action:hover { background: #444; border-color: var(--yt-blue); }
+
+        .secure-link { color: var(--yt-blue); cursor: pointer; text-decoration: underline; }
+        .footer { text-align: center; padding: 40px; color: var(--text-dim); font-size: 12px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="header-info">
-        <div class="position">Персональний кабінет автора</div>
-        <h1>Кравченко Віктор Миколайович</h1>
-        <div class="status-tag">🛡️ НА СЛУЖБІ В ЗСУ</div>
-    </div>
-
-    <div class="author-card">
-        <p><strong>Посада:</strong> Звукорежисер Чернігівського обласного академічного українського музично-драматичного театру ім. Т.Г. Шевченка</p>
-        <p><strong>Об'єкт права:</strong> Музичне оформлення вистави «Чарлі Гордон – ідіот»</p>
-        <p><strong>Контакт:</strong> <span id="mail-placeholder" class="secure-mail" onclick="revealMail()">[Показати Email для звітів]</span></p>
-    </div>
-
-    <div class="chat-area" id="chatBox">
-        <div class="message">
-            <span class="bot-name">ЮРИДИЧНИЙ АСИСТЕНТ</span>
-            Бажаю здоров'я. Я уповноважений здійснювати моніторинг нарахування роялті для Віктора Миколайовича. Хто ви?
+    <div class="header">
+        <div class="header-content">
+            <h1>Віктор Кравченко</h1>
+            <div style="color: var(--text-dim);">Звукорежисер Чернігівського облмуздрамтеатру</div>
+            <div class="status-tag">🛡️ В ЛАВАХ ЗСУ</div>
         </div>
     </div>
 
-    <div class="action-buttons" id="btnGroup">
-        <button onclick="handleRole('theatre')">Я представник адміністрації театру</button>
-        <button onclick="handleRole('oku')">Я представник ОКУ (УААСП / Автори та Видавці)</button>
+    <div class="main-grid">
+        <div class="content-left">
+            <div class="card">
+                <h2>🎬 Вибрані роботи (Zvuko Shop)</h2>
+                
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=zvukoshop" allowfullscreen></iframe>
+                </div>
+                <p style="font-size: 13px; color: var(--text-dim);">Останні завантаження з каналу. Ви можете переглянути повне портфоліо на моєму <a href="https://www.youtube.com/@zvukoshop" target="_blank" style="color: var(--yt-blue);">YouTube-каналі</a>.</p>
+            </div>
+
+            <div class="card">
+                <h2>🎭 Проекти в театрі</h2>
+                <p><strong>Вистава:</strong> «Чарлі Гордон – ідіот»</p>
+                <p style="font-size: 14px;">Музичне оформлення та саунд-дизайн створені спеціально для експериментальної сцени Чернігівського академічного театру ім. Т.Г. Шевченка.</p>
+            </div>
+        </div>
+
+        <div class="content-right">
+            <div class="card">
+                <h2>⚖️ Авторський контроль</h2>
+                <div class="chat-box" id="chat">
+                    <div class="msg"><b>Бот:</b> Вітаю. Я уповноважений здійснювати моніторинг роялті. Виберіть вашу роль:</div>
+                </div>
+                <div id="controls">
+                    <button class="btn-action" onclick="botRespond('theatre')">🏢 Адміністрація театру</button>
+                    <button class="btn-action" onclick="botRespond('oku')">⚖️ Представник ОКУ</button>
+                </div>
+                <hr style="border: 0; border-top: 1px solid #333; margin: 15px 0;">
+                <p style="font-size: 12px; color: var(--text-dim);">
+                    Контакт для офіційних звітів:<br>
+                    <span class="secure-link" onclick="reveal()">[Показати email]</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 Віктор Кравченко. Всі права застережено. Розроблено в рамках проекту VARKHAN.
     </div>
 </div>
 
-<div class="footer">
-    Автоматизована система обліку авторських прав «VARKHAN Legal»
-</div>
-
 <script>
-// Функція для розшифровки пошти (захист від ботів)
-function revealMail() {
-    const user = "prorecvictorprorec";
-    const domain = "gmail.com";
-    const el = document.getElementById('mail-placeholder');
-    el.innerHTML = `<a href="mailto:${user}@${domain}" style="color: #8cb896;">${user}@${domain}</a>`;
-    el.onclick = null; // Вимикаємо клік після появи
+function reveal() {
+    const u = "prorecvictorprorec";
+    const d = "gmail.com";
+    alert("Email для звітів: " + u + "@" + d);
 }
 
-function handleRole(role) {
-    const chat = document.getElementById('chatBox');
-    const btns = document.getElementById('btnGroup');
-    const m = "prorecvictorprorec" + "@" + "gmail.com"; // Збірка адреси всередині скрипта
+function botRespond(role) {
+    const chat = document.getElementById('chat');
+    const ctrl = document.getElementById('controls');
+    const mail = "prorecvictorprorec@gmail.com";
     
-    let response = "";
-    if(role === 'theatre') {
-        response = `Для Чернігівського драмтеатру: Прошу надати відомості про нарахування роялті з квітня 2023 року. Копії рапортів надсилайте на <strong>${m}</strong>.`;
-    } else {
-        response = `Для представників ОКУ: Прошу провести звірку за прізвищем Кравченко В. М. Актуальний статус нарахувань прошу направити на <strong>${m}</strong>.`;
-    }
-
-    chat.innerHTML += `<div class="message" style="margin-top:15px; border-left: 2px solid #8cb896;">
-        <span class="bot-name">СИСТЕМА</span>
-        ${response}
-    </div>`;
-    btns.innerHTML = `<p style="text-align:center; color:#8cb896; font-weight:bold; padding: 10px;">Запит зафіксовано. Використовуйте вказану адресу для офіційної кореспонденції.</p>`;
-    chat.scrollTop = chat.scrollHeight;
-}
-</script>
-
-</body>
-</html>
+    let text = "";
+    if(role === 'theatre')
